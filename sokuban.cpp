@@ -22,6 +22,8 @@ Sokuban::Sokuban()
     std::string levelFile;
     switch (level)
     {
+        case 1: levelFile = "level1.txt";
+            break;
         case 2: levelFile = "level2.txt";
             break;
         case 3: levelFile = "level3.txt";
@@ -52,6 +54,8 @@ void Sokuban::solve()
         case 2: print_WaysToGetGoal(breadthFS());
             break;
         case 3: print_WaysToGetGoal(bestFS());
+            break;
+        case 4: print_WaysToGetGoal(aStar());
             break;
         default: print_WaysToGetGoal(aStar());
             break;
@@ -384,7 +388,7 @@ void Sokuban::print_WaysToGetGoal(Node* node)
 int Sokuban::calculate_h(State state)
 {
 
-    cout << "With manhattan distance = " << state.manhattanDistance() + (state.goal_num - state.checkedGoalNumber()) << " ";
+    //cout << "With manhattan distance = " << state.manhattanDistance() + (state.goal_num - state.checkedGoalNumber()) << " ";
     return state.manhattanDistance() + (state.goal_num - state.checkedGoalNumber());
     //return state.euclideanDistance() - state.checkedGoalNumber();
 }
